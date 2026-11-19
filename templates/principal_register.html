@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Principal Registration | Timetable Management</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+    <div class="login-container">
+
+        <div class="login-left">
+            <div class="brand">
+                <div class="brand-icon">T</div>
+                <span>Timetable Management</span>
+            </div>
+
+            <div class="welcome-text">
+                <h1>Welcome, Principal!</h1>
+                <p>
+                    Create your administrator account to manage
+                    school timetables, teachers and academic schedules.
+                </p>
+            </div>
+
+            <div class="login-footer">
+                Timetable Generation and Monitoring System
+            </div>
+        </div>
+
+        <div class="login-right">
+            <div class="login-form">
+
+                <h2>Create Account</h2>
+                <p class="subtitle">Principal Registration</p>
+
+                <form method="POST">
+                    {% csrf_token %}
+
+                    <label for="full_name">Full Name</label>
+                    <input type="text" id="full_name" name="full_name"
+                           placeholder="Enter your full name" required>
+
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username"
+                           placeholder="Create a username" required>
+
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email"
+                           placeholder="Enter your email" required>
+
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password"
+                           placeholder="Create a password" required>
+
+                    <label for="confirm_password">Confirm Password</label>
+                    <input type="password" id="confirm_password"
+                           name="confirm_password"
+                           placeholder="Confirm your password" required>
+
+                    {% if error %}
+                        <p style="color:red; font-size:13px; margin-bottom:15px;">
+                            {{ error }}
+                        </p>
+                    {% endif %}
+
+                    <button type="submit">Register as Principal</button>
+                </form>
+
+                <p class="login-note">
+                    Already registered?
+                    <a href="{% url 'login' %}">Sign In</a>
+                </p>
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

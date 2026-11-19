@@ -1,0 +1,204 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Timetable Management</title>
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'teacher.css' %}">
+</head>
+
+<body class="admin-dashboard">
+
+    <div class="dashboard-layout">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <div class="sidebar-brand">
+                <div class="sidebar-logo">T</div>
+                <div>
+                    <h2>Timetable</h2>
+                    <span>Management System</span>
+                </div>
+            </div>
+
+            <div class="sidebar-section-title">MAIN MENU</div>
+
+            <nav class="sidebar-nav">
+
+                <a href="{% url 'dashboard' %}" class="sidebar-link active">
+                    <span>▦</span> Dashboard
+                </a>
+
+                <a href="{% url 'teacher_management' %}" class="sidebar-link">
+                    <span>♙</span> Teacher Management
+                </a>
+
+                <a href="{% url 'create_timetable' %}" class="sidebar-link">
+                    <span>▤</span> Create Timetable
+                </a>
+
+                <a href="{% url 'general_timetable' %}" class="sidebar-link">
+                    <span>▣</span> General Timetable
+                </a>
+
+                <a href="{% url 'update_timetable' %}" class="sidebar-link">
+                    <span>⟳</span> Update Timetable
+                </a>
+
+                <a href="{% url 'records' %}" class="sidebar-link">
+                    <span>▧</span> Records
+                </a>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+                <a href="{% url 'logout' %}" class="sidebar-link logout-link">
+                    <span>↪</span> Logout
+                </a>
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="dashboard-content">
+
+            <!-- TOPBAR -->
+            <header class="dashboard-topbar">
+
+                <div>
+                    <h2>Dashboard</h2>
+                    <p>Welcome to your school timetable management portal.</p>
+                </div>
+
+                <div class="admin-profile">
+                    <div class="profile-avatar">
+                        {{ full_name|default:username|first|upper }}
+                    </div>
+
+                    <div>
+                        <strong>{{ full_name|default:username }}</strong>
+                        <span>{{ role }}</span>
+                    </div>
+                </div>
+
+            </header>
+
+
+            <!-- WELCOME -->
+            <section class="dashboard-welcome">
+                <div>
+                    <span>ADMINISTRATION PORTAL</span>
+                    <h1>Welcome back, {{ full_name|default:username }}!</h1>
+                    <p>Manage your school's teachers, classes and timetables from one place.</p>
+                </div>
+            </section>
+
+
+            <!-- STAT CARDS -->
+            <section class="dashboard-stats">
+
+                <div class="stat-card">
+                    <div class="stat-icon blue">♙</div>
+                    <div>
+                        <span>Teacher Management</span>
+                        <h3>Teachers</h3>
+                        <a href="{% url 'teacher_management' %}">Manage teachers →</a>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon purple">▤</div>
+                    <div>
+                        <span>Timetable Configuration</span>
+                        <h3>General Timetable</h3>
+                        <a href="{% url 'general_timetable' %}">View timetable →</a>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon orange">⟳</div>
+                    <div>
+                        <span>Schedule Management</span>
+                        <h3>Update Timetable</h3>
+                        <a href="{% url 'update_timetable' %}">View updates →</a>
+                    </div>
+                </div>
+
+            </section>
+
+
+            <!-- MANAGEMENT SECTION -->
+            <section class="dashboard-section">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>Management Modules</h2>
+                        <p>Access the main features of the application.</p>
+                    </div>
+                </div>
+
+                <div class="management-grid">
+
+                    <a href="{% url 'teacher_management' %}" class="management-card">
+                        <div class="management-icon blue">♙</div>
+                        <h3>Teacher Management</h3>
+                        <p>Add and manage teacher information, departments and subjects.</p>
+                        <span>Open module →</span>
+                    </a>
+
+                    <a href="{% url 'create_timetable' %}" class="management-card">
+                        <div class="management-icon purple">▤</div>
+                        <h3>Create Timetable</h3>
+                        <p>Configure school hours, periods, breaks, classes and sections.</p>
+                        <span>Open module →</span>
+                    </a>
+
+                    <a href="{% url 'general_timetable' %}" class="management-card">
+                        <div class="management-icon green">▣</div>
+                        <h3>General Timetable</h3>
+                        <p>View the weekly timetable generated using the Genetic Algorithm.</p>
+                        <span>Open module →</span>
+                    </a>
+
+                    <a href="{% url 'update_timetable' %}" class="management-card">
+                        <div class="management-icon orange">⟳</div>
+                        <h3>Update Timetable</h3>
+                        <p>Manage timetable changes and substitute arrangements.</p>
+                        <span>Open module →</span>
+                    </a>
+
+                    <a href="{% url 'records' %}" class="management-card">
+                        <div class="management-icon teal">▧</div>
+                        <h3>Records</h3>
+                        <p>View teacher substitution history, including absent teachers, substitutes and periods.</p>
+                        <span>Open module →</span>
+                    </a>
+
+                    <a href="#" class="management-card">
+                        <div class="management-icon grey">⚙</div>
+                        <h3>School Settings</h3>
+                        <p>Configure school information and scheduling preferences.</p>
+                        <span>Coming soon</span>
+                    </a>
+
+                </div>
+
+            </section>
+
+            <footer class="dashboard-footer">
+                © 2026 Timetable Management System | Admin Portal
+            </footer>
+
+        </main>
+
+    </div>
+
+</body>
+</html>

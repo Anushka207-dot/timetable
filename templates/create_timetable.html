@@ -1,0 +1,200 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create General Timetable</title>
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'timetable.css' %}">
+</head>
+
+<body class="timetable-page">
+
+<div class="timetable-container">
+
+    <!-- HEADER -->
+    <header class="timetable-header">
+
+        <div class="timetable-brand">
+            <div class="brand-icon">T</div>
+            <div>
+                <h2>Timetable Management</h2>
+                <p>School Administration Portal</p>
+            </div>
+        </div>
+
+        <a href="{% url 'dashboard' %}" class="back-dashboard">
+            &#8592; Back to Dashboard
+        </a>
+
+    </header>
+
+    <main class="timetable-content">
+
+        <!-- PAGE HEADING -->
+        <div class="page-heading">
+            <div>
+                <span class="page-tag">TIMETABLE CONFIGURATION</span>
+                <h1>Create General Timetable</h1>
+                <p>Configure school timings, breaks, classes and sections.</p>
+            </div>
+            <div class="heading-icon">📅</div>
+        </div>
+
+        {% if error %}
+            <div class="timetable-error">
+                {{ error }}
+            </div>
+        {% endif %}
+
+        <!-- FORM -->
+        <form method="POST"
+              action="{% url 'create_timetable' %}"
+              class="timetable-form">
+
+            {% csrf_token %}
+
+            <!-- SCHOOL TIMINGS -->
+            <section class="form-section">
+
+                <div class="section-heading">
+                    <span class="section-number">01</span>
+                    <div>
+                        <h2>School Timings</h2>
+                        <p>Set the school's daily working schedule.</p>
+                    </div>
+                </div>
+
+                <div class="timetable-grid">
+
+                    <div class="form-group">
+                        <label>School Starting Time</label>
+                        <input type="time" name="school_start" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>School Ending Time</label>
+                        <input type="time" name="school_end" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Working Days</label>
+                        <select name="working_days" required>
+                            <option value="">Select working days</option>
+                            <option value="5">Monday - Friday</option>
+                            <option value="6">Monday - Saturday</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Periods Per Day</label>
+                        <input type="number" name="periods"
+                               min="1" max="12"
+                               placeholder="Example: 8" required>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- BREAK TIMINGS -->
+            <section class="form-section">
+
+                <div class="section-heading">
+                    <span class="section-number">02</span>
+                    <div>
+                        <h2>Break Timings</h2>
+                        <p>Configure short breaks and lunch breaks.</p>
+                    </div>
+                </div>
+
+                <div class="timetable-grid">
+
+                    <div class="form-group">
+                        <label>Short Break Start</label>
+                        <input type="time" name="short_break_start" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Short Break End</label>
+                        <input type="time" name="short_break_end" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Lunch Break Start</label>
+                        <input type="time" name="lunch_start" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Lunch Break End</label>
+                        <input type="time" name="lunch_end" required>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- CLASSES AND SECTIONS -->
+            <section class="form-section">
+
+                <div class="section-heading">
+                    <span class="section-number">03</span>
+                    <div>
+                        <h2>Classes and Sections</h2>
+                        <p>Select the classes and define their sections.</p>
+                    </div>
+                </div>
+
+                <div class="form-group full-width">
+                    <label>Select Classes</label>
+
+                    <select name="classes" multiple required>
+                        {% for number in "123456789" %}
+                            <option value="{{ number }}">
+                                Class {{ number }}
+                            </option>
+                        {% endfor %}
+                        <option value="10">Class 10</option>
+                    </select>
+
+                    <small>Hold Ctrl to select multiple classes.</small>
+                </div>
+
+                <div class="form-group full-width section-input">
+                    <label>Sections</label>
+
+                    <input type="text" name="sections"
+                           placeholder="Example: A, B, C" required>
+
+                    <small>
+                        Enter the sections available in each selected class.
+                    </small>
+                </div>
+
+            </section>
+
+            <!-- ACTION BUTTONS -->
+            <div class="form-actions">
+
+                <button type="submit" class="save-timetable-btn">
+                    Save Timetable Settings
+                </button>
+
+                <a href="{% url 'dashboard' %}" class="cancel-btn">
+                    Cancel
+                </a>
+
+            </div>
+
+        </form>
+
+        <footer class="timetable-footer">
+            Timetable Monitoring and Management System
+        </footer>
+
+    </main>
+</div>
+
+</body>
+</html>

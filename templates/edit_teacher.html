@@ -1,0 +1,118 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Teacher | Timetable Management</title>
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'teacher.css' %}">
+</head>
+
+<body class="teacher-page">
+
+<div class="dashboard-container">
+
+    <header class="dashboard-header">
+        <div>
+            <h1>Edit Teacher</h1>
+            <p>Update the registered teacher's information.</p>
+        </div>
+
+        <a href="{% url 'teacher_management' %}" class="logout-btn">
+            ← Back to Teachers
+        </a>
+    </header>
+
+    <main class="dashboard-content">
+
+        <section class="teacher-form-card">
+
+            <div class="form-heading">
+                <div>
+                    <h2>Teacher Information</h2>
+                    <p>Make the required changes and save the details.</p>
+                </div>
+
+                <div class="form-heading-icon">✎</div>
+            </div>
+
+            {% if error %}
+                <div class="form-message error-message">
+                    {{ error }}
+                </div>
+            {% endif %}
+
+            <form method="POST">
+                {% csrf_token %}
+
+                <div class="teacher-form-grid">
+
+                    <div class="form-group">
+                        <label for="teacher_id">Teacher ID (Optional)</label>
+                        <input
+                            type="text"
+                            id="teacher_id"
+                            name="teacher_id"
+                            value="{{ teacher.teacher_id|default:'' }}"
+                            placeholder="Enter Teacher ID">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="full_name">Full Name</label>
+                        <input
+                            type="text"
+                            id="full_name"
+                            name="full_name"
+                            value="{{ teacher.full_name }}"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            value="{{ teacher.email }}"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input
+                            type="text"
+                            id="phone"
+                            name="phone"
+                            value="{{ teacher.phone }}"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subjects">Subjects</label>
+                        <input
+                            type="text"
+                            id="subjects"
+                            name="subjects"
+                            value="{{ teacher.subjects }}"
+                            required>
+                    </div>
+
+                </div>
+
+                <button type="submit" class="add-teacher-btn">
+                    Save Changes
+                </button>
+
+            </form>
+
+        </section>
+
+    </main>
+
+</div>
+
+</body>
+</html>

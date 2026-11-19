@@ -1,0 +1,218 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Timetable</title>
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'update_timetable.css' %}">
+</head>
+
+<body class="update-timetable-page">
+
+    <div class="update-container">
+
+        <!-- HEADER -->
+        <header class="update-header">
+
+            <div class="update-brand">
+                <div class="brand-icon">T</div>
+
+                <div>
+                    <h2>Timetable Management</h2>
+                    <p>School Administration Portal</p>
+                </div>
+            </div>
+
+            <a href="{% url 'dashboard' %}" class="back-dashboard">
+                &#8592; Back to Dashboard
+            </a>
+
+        </header>
+
+
+        <main class="update-content">
+
+            <!-- PAGE HEADING -->
+            <div class="update-heading">
+
+                <div>
+                    <span class="update-tag">TIMETABLE MANAGEMENT</span>
+
+                    <h1>Update Timetable</h1>
+
+                    <p>
+                        View and manage timetable modifications
+                        for classes and sections.
+                    </p>
+                </div>
+
+                <div class="update-icon">📅</div>
+
+            </div>
+
+
+            <!-- SELECT CLASS AND SECTION -->
+            <section class="update-card">
+
+                <div class="card-heading">
+                    <h2>Select Class and Section</h2>
+
+                    <p>
+                        Choose the class timetable you want to view.
+                    </p>
+                </div>
+
+
+                <div class="selection-grid">
+
+                    <div class="form-group">
+                        <label for="class">Class</label>
+
+                        <select id="class" name="class">
+                            <option value="">Select Class</option>
+                            {% for number in "12345678910" %}
+                            {% endfor %}
+                            <option>Class 1</option>
+                            <option>Class 2</option>
+                            <option>Class 3</option>
+                            <option>Class 4</option>
+                            <option>Class 5</option>
+                            <option>Class 6</option>
+                            <option>Class 7</option>
+                            <option>Class 8</option>
+                            <option>Class 9</option>
+                            <option>Class 10</option>
+                        </select>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="section">Section</label>
+
+                        <select id="section" name="section">
+                            <option value="">Select Section</option>
+                            <option>Section A</option>
+                            <option>Section B</option>
+                            <option>Section C</option>
+                        </select>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="date">Date</label>
+
+                        <input type="date" id="date" name="date">
+                    </div>
+
+                </div>
+
+
+                <button type="button" class="view-timetable-btn">
+                    View Timetable
+                </button>
+
+            </section>
+
+
+
+            <!-- TIMETABLE DISPLAY -->
+            <section class="update-card timetable-display">
+
+                <div class="card-heading">
+                    <h2>Timetable</h2>
+
+                    <p>
+                        The selected class timetable will appear here.
+                    </p>
+                </div>
+
+
+                <div class="timetable-placeholder">
+
+                    <div class="placeholder-icon">📋</div>
+
+                    <h3>No Timetable Selected</h3>
+
+                    <p>
+                        Select a class, section and date
+                        to view the timetable.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- MODIFICATION OPTIONS -->
+            <section class="update-card update-actions">
+
+                <div class="card-heading">
+                    <h2>Timetable Modifications</h2>
+
+                    <p>
+                        Manage changes to the existing timetable.
+                    </p>
+                </div>
+
+
+                <div class="modification-placeholder">
+
+                    <div class="modification-item">
+                        <span>🔄</span>
+
+                        <div>
+                            <h3>Modify Period</h3>
+                            <p>
+                                Change the assigned subject or teacher
+                                for a particular period.
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div class="modification-item">
+                        <span>👩‍🏫</span>
+
+                        <div>
+                            <h3>Teacher Substitution</h3>
+                            <p>
+                                Assign an available substitute teacher
+                                when a teacher is absent.
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div class="modification-item">
+                        <span>🕒</span>
+
+                        <div>
+                            <h3>Schedule Adjustment</h3>
+                            <p>
+                                Modify period timings and other
+                                timetable arrangements.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- FOOTER -->
+            <footer class="update-footer">
+                Timetable Monitoring and Management System
+            </footer>
+
+        </main>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>General Timetable | Acad Sync</title>
+
+    <link rel="stylesheet" href="{% static 'general_timetable.css' %}">
+</head>
+
+<body>
+
+<div class="page-container">
+
+    <header class="page-header">
+        <div>
+            <h1>General Timetable</h1>
+            <p>View the school timetable generated using the Genetic Algorithm.</p>
+        </div>
+
+        <a href="{% url 'dashboard' %}" class="back-button">
+            ← Back to Dashboard
+        </a>
+    </header>
+
+    <section class="selection-card">
+        <h2>Select Class and Section</h2>
+
+        <div class="selection-form">
+
+            <div class="form-group">
+                <label for="class">Class</label>
+                <select id="class">
+                    <option value="">Select Class</option>
+                    {% for number in "12345678910" %}
+                        <option value="{{ number }}">Class {{ number }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="section">Section</label>
+                <select id="section">
+                    <option value="">Select Section</option>
+                    <option value="A">Section A</option>
+                    <option value="B">Section B</option>
+                    <option value="C">Section C</option>
+                </select>
+            </div>
+
+            <button type="button" id="viewTimetableBtn">
+                View Timetable
+            </button>
+
+        </div>
+    </section>
+
+    <section class="timetable-card">
+
+        <div class="timetable-heading">
+            <div>
+                <h2>Weekly Timetable</h2>
+                <p id="selectedClass">Select a class and section to continue.</p>
+            </div>
+
+            <span class="status-label">GA Generated</span>
+        </div>
+
+        <div class="table-container">
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Day</th>
+                        <th>Period 1</th>
+                        <th>Period 2</th>
+                        <th>Short Break</th>
+                        <th>Period 3</th>
+                        <th>Period 4</th>
+                        <th>Lunch Break</th>
+                        <th>Period 5</th>
+                        <th>Period 6</th>
+                    </tr>
+                </thead>
+
+                <tbody id="timetableBody">
+                    <tr>
+                        <td colspan="9" class="empty-message">
+                            Please select a class and section to view the timetable.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+        <p class="note">
+            Note: The actual timetable will be displayed here after integration
+            with the Genetic Algorithm backend.
+        </p>
+
+    </section>
+
+</div>
+
+<script src="{% static 'general_timetable.js' %}"></script>
+
+</body>
+</html>

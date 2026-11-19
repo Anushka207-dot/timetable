@@ -1,0 +1,220 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Substitution Records</title>
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'records.css' %}">
+</head>
+
+<body class="records-page">
+
+    <div class="records-container">
+
+        <!-- HEADER -->
+        <header class="records-header">
+
+            <div class="records-brand">
+                <div class="records-logo">T</div>
+
+                <div>
+                    <h2>Timetable Management</h2>
+                    <p>School Administration Portal</p>
+                </div>
+            </div>
+
+            <a href="{% url 'dashboard' %}" class="back-dashboard">
+                &#8592; Back to Dashboard
+            </a>
+
+        </header>
+
+
+        <main class="records-content">
+
+            <!-- PAGE HEADING -->
+            <div class="records-heading">
+
+                <div>
+                    <span class="records-tag">TIMETABLE MANAGEMENT</span>
+
+                    <h1>Substitution Records</h1>
+
+                    <p>
+                        View the history of teacher substitutions
+                        across classes and sections.
+                    </p>
+                </div>
+
+                <div class="records-icon">📋</div>
+
+            </div>
+
+
+            <!-- SUMMARY CARDS -->
+            <section class="summary-grid">
+
+                <div class="summary-card">
+                    <div class="summary-icon blue-icon">📊</div>
+
+                    <div>
+                        <p>Total Substitutions</p>
+                        <h2>--</h2>
+                    </div>
+                </div>
+
+
+                <div class="summary-card">
+                    <div class="summary-icon green-icon">📅</div>
+
+                    <div>
+                        <p>Today's Substitutions</p>
+                        <h2>--</h2>
+                    </div>
+                </div>
+
+            </section>
+
+
+            <!-- SUBSTITUTION HISTORY -->
+            <section class="records-card">
+
+                <div class="records-card-heading">
+
+                    <div>
+                        <h2>Teacher Substitution History</h2>
+
+                        <p>
+                            Details of absent teachers and their
+                            assigned substitute teachers.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- SEARCH AND FILTERS -->
+                <div class="records-filters">
+
+                    <div class="filter-group search-group">
+                        <label for="search">Search Teacher</label>
+
+                        <input
+                            type="text"
+                            id="search"
+                            placeholder="Search by teacher name..."
+                        >
+                    </div>
+
+
+                    <div class="filter-group">
+                        <label for="filter-date">Date</label>
+
+                        <input type="date" id="filter-date">
+                    </div>
+
+
+                    <div class="filter-group">
+                        <label for="filter-class">Class</label>
+
+                        <select id="filter-class">
+                            <option value="">All Classes</option>
+                            <option>Class 1</option>
+                            <option>Class 2</option>
+                            <option>Class 3</option>
+                            <option>Class 4</option>
+                            <option>Class 5</option>
+                            <option>Class 6</option>
+                            <option>Class 7</option>
+                            <option>Class 8</option>
+                            <option>Class 9</option>
+                            <option>Class 10</option>
+                        </select>
+                    </div>
+
+
+                    <div class="filter-group">
+                        <label for="filter-section">Section</label>
+
+                        <select id="filter-section">
+                            <option value="">All Sections</option>
+                            <option>Section A</option>
+                            <option>Section B</option>
+                            <option>Section C</option>
+                        </select>
+                    </div>
+
+                </div>
+
+
+                <!-- RECORDS TABLE -->
+                <div class="records-table-wrapper">
+
+                    <table class="records-table">
+
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Absent Teacher</th>
+                                <th>Substitute Teacher</th>
+                                <th>Class</th>
+                                <th>Section</th>
+                                <th>Subject</th>
+                                <th>Period</th>
+                                <th>Period Timing</th>
+                                <th>Reason</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+
+
+                        <tbody>
+
+                            <!-- Records will be loaded from the backend -->
+
+                            <tr>
+                                <td colspan="10" class="empty-records">
+
+                                    <div class="empty-icon">📂</div>
+
+                                    <h3>No Substitution Records Yet</h3>
+
+                                    <p>
+                                        Teacher substitution records
+                                        will appear here once substitutions
+                                        are made.
+                                    </p>
+
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <div class="records-footer">
+                    <p>Showing substitution history</p>
+                </div>
+
+            </section>
+
+
+            <!-- FOOTER -->
+            <footer class="page-footer">
+                Timetable Monitoring and Management System
+            </footer>
+
+        </main>
+
+    </div>
+
+</body>
+</html>
